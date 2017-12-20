@@ -11,7 +11,7 @@ module TextExtractor
 
       def load
         @@config = {}
-        if Rails
+        if defined?(Rails)
           filename = File.join([Rails.root.to_s, 'config', 'text_extractor.yml'])
           if File.file?(filename)
             file_config = YAML::load(ERB.new(File.read(filename)).result)

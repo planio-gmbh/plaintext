@@ -118,7 +118,6 @@ module TextExtractor
       def initialize
         @content_type = 'application/pdf'
         @command = TEXT_EXTRACTORS['pdftotext'] || DEFAULT
-        Rails.logger.info "PdfHandler command: #{@command}"
       end
     end
 
@@ -317,7 +316,7 @@ module TextExtractor
       def initialize
         @content_types = CONTENT_TYPES
       end
-      def text(file)
+      def text(file, _content_type)
         TextExtractor::CodesetUtil.to_utf8 IO.read(file), 'UTF-8'
       end
     end
@@ -345,7 +344,7 @@ module TextExtractor
         str.force_encoding('UTF-8')
         return str
       end
-      enc = encoding.blank? ? 'UTF-8' : encoding
+      enc = (encoding.nil? || encoding.size == 0) ? 'UTF-8' : encoding
       if enc.upcase != 'UTF-8'
         str.force_encoding(enc)
         str = str.encode('UTF-8', invalid: :replace,
