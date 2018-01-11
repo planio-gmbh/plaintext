@@ -1,4 +1,4 @@
-# Textextractor
+# Text-Extractor
 
 This gem wraps command line tools to extract plain text from typical files such as
 
@@ -13,11 +13,13 @@ This gem wraps command line tools to extract plain text from typical files such 
     - Text
     - Spreadsheet
 - Plaintext (txt)
+- Comma separated vector (csv)
 
 ## Acknowledgemts
 
-This gem was extracted from a work by Jens Krämer / Planio, which they provided as a patch for Redmine. Thank you, guys!
-https://www.redmine.org/issues/306
+This gem bases on work by Jens Krämer / Planio, who originally provided it as a [patch for Redmine](https://www.redmine.org/issues/306). Now, it is a collaborative effort of
+both project management software providers
+[Planio](https://plan.io) and [OpenProject](https://openproject.org) as both systems tackle the identical challenge to extract plain text from attachment files.
 
 ## Installation
 
@@ -94,5 +96,5 @@ fulltext = TextExtractor::Resolver.new(file, content_type).text
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/opf/text-extractor.
+Bug reports and pull requests are welcome on GitHub at https://github.com/planio-gmbh/text-extractor.
 
