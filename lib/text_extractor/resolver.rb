@@ -4,7 +4,7 @@ module TextExtractor
   class Resolver
     MAX_FULLTEXT_LENGTH = 4194304 # 4 megabytes
 
-    def initialize(file, content_type=nil)
+    def initialize(file, content_type = nil)
       @file = file
       @content_type = content_type
     end
