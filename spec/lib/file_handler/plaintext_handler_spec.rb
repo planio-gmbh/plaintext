@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::Resolver::PlaintextHandler do
+describe TextExtractor::PlaintextHandler do
 
   subject { described_class.new }
 
