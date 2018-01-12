@@ -8,7 +8,7 @@ describe TextExtractor::PptHandler do
 
   if described_class.available?
     it 'Should extract text from .ppt files' do
-      file = File.new('spec/fixtures/files/text.ppt', 'r')
+      file = File.new('spec/fixtures/files/presentation.ppt', 'r')
 
       expect(subject.text(file, 'application/vnd.ms-powerpoint')).to match /lorem ipsum fulltext find me!/
       expect(subject.text(file, 'application/powerpoint')).to match /lorem ipsum fulltext find me!/

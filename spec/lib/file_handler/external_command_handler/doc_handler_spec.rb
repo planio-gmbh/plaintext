@@ -7,8 +7,8 @@ describe TextExtractor::DocHandler do
   subject { described_class.new }
 
   if described_class.available?
-    it 'Should extract text from .pdf files' do
-      file = File.new('spec/fixtures/files/text.pdf', 'r')
+    it 'Should extract text from .doc files' do
+      file = File.new('spec/fixtures/files/text.doc', 'r')
 
       expect(subject.text(file, 'application/vnd.ms-word')).to match /lorem ipsum fulltext find me!/
       expect(subject.text(file, 'application/msword')).to match /lorem ipsum fulltext find me!/
