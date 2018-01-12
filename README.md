@@ -3,7 +3,7 @@
 This gem wraps command line tools to extract plain text from typical files such as
 
 - PDF
-- UTF
+- RTF
 - MS Office
     - Word (doc, docx)
     - Excel (xsl, xslx)
