@@ -31,7 +31,7 @@ module TextExtractor
     end
 
     def available?
-      @command and @command.any? and File.executable?(@command[0])
+      @command.present? and File.executable?(@command[0])
     end
 
     def self.available?
