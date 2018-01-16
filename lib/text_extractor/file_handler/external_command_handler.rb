@@ -20,7 +20,7 @@ module TextExtractor
 
     FILE_PLACEHOLDER = '__FILE__'.freeze
 
-    def text(file, content_type)
+    def text(file)
       cmd = @command.dup
       cmd[cmd.index(FILE_PLACEHOLDER)] = file.path
       shellout(cmd){ |io| io.read }.to_s

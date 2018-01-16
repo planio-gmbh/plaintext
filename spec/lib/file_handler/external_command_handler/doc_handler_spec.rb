@@ -10,8 +10,9 @@ describe TextExtractor::DocHandler do
     it 'Should extract text from .doc files' do
       file = File.new('spec/fixtures/files/text.doc', 'r')
 
-      expect(subject.text(file, 'application/vnd.ms-word')).to match /lorem ipsum fulltext find me!/
-      expect(subject.text(file, 'application/msword')).to match /lorem ipsum fulltext find me!/
+      expect(subject.text(file)).to match /lorem ipsum fulltext find me!/
+      expect(TextExtractor::Resolver.new(file, 'application/msword').text).to match /lorem ipsum fulltext find me!/
+      expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-word').text).to match /lorem ipsum fulltext find me!/
     end
   else
     warn "#{described_class.name} could not be tested as external program is not available."

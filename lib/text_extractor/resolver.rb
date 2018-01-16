@@ -12,7 +12,7 @@ module TextExtractor
     # returns the extracted fulltext or nil if no matching handler was found
     # for the file type.
     def text
-      if handler = find_handler and text = handler.text(@file, @content_type)
+      if handler = find_handler and text = handler.text(@file)
         text.gsub! /\s+/m, ' '
         text.strip!
         text.mb_chars.compose.limit(MAX_FULLTEXT_LENGTH).to_s

@@ -9,7 +9,7 @@ describe TextExtractor::DocxHandler do
   it 'Should extract text from .docx files' do
     file = File.new('spec/fixtures/files/text.docx', 'r')
 
-    expect(subject.text(file, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')).to(
+    expect(subject.text(file)).to(
       match /lorem ipsum/
     )
     expect(TextExtractor::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document').text).to(

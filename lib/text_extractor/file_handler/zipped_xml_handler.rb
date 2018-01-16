@@ -37,7 +37,7 @@ module TextExtractor
       end
     end
 
-    def text(file, _content_type)
+    def text(file)
       Zip::File.open(file) do |zip_file|
         zip_file.each do |entry|
           if entry.name == @file_name

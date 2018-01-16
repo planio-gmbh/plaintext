@@ -8,11 +8,13 @@ describe TextExtractor::PlaintextHandler do
 
   it 'Should extract text from .txt files' do
     file = File.new('spec/fixtures/files/text.txt', 'r')
-    expect(subject.text(file, 'text/plain')).to match /lorem/
+    expect(subject.text(file)).to match /lorem/
+    expect(TextExtractor::Resolver.new(file, 'text/plain').text).to match /lorem ipsum/
   end
 
   it 'Should extract text from .csv files' do
     file = File.new('spec/fixtures/files/spreadsheet.csv', 'r')
-    expect(subject.text(file, 'text/csv')).to match /lorem/
+    expect(subject.text(file)).to match /lorem/
+    expect(TextExtractor::Resolver.new(file, 'text/csv').text).to match /lorem/
   end
 end

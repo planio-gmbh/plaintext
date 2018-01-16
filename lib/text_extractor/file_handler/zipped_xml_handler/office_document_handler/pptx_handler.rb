@@ -14,9 +14,9 @@ module TextExtractor
       @namespace_uri = 'http://schemas.openxmlformats.org/drawingml/2006/main'
     end
 
-    def text(attachment)
+    def text(file)
       slides = []
-      Zip::File.open(attachment.diskfile) do |zip_file|
+      Zip::File.open(file) do |zip_file|
         zip_file.each do |entry|
           if entry.name =~ /slide(\d+)\.xml/
             slides << [$1, xml_to_text(entry.get_input_stream)]

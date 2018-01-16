@@ -10,8 +10,11 @@ describe TextExtractor::XlsHandler do
     it 'Should extract text from .xls files' do
       file = File.new('spec/fixtures/files/spreadsheet.xls', 'r')
 
-      expect(subject.text(file, 'application/vnd.ms-excel')).to match /ipsum fulltext find me!/
-      expect(subject.text(file, 'application/excel')).to match /ipsum fulltext find me!/
+      expect(subject.text(file)).to match /ipsum fulltext find me!/
+      expect(subject.text(file)).to match /ipsum fulltext find me!/
+
+      expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-excel').text).to match /ipsum fulltext find me!/
+      expect(TextExtractor::Resolver.new(file, 'application/excel').text).to match /ipsum fulltext find me!/
     end
   else
     warn "#{described_class.name} could not be tested as external program is not available."
