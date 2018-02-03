@@ -15,7 +15,7 @@ This gem wraps command line tools to extract plain text from typical files such 
 - Plaintext (txt)
 - Comma separated vector (csv)
 
-## Acknowledgemts
+## Acknowledgements
 
 This gem bases on work by Jens Krämer / Planio, who originally provided it as a
 [patch for Redmine](https://www.redmine.org/issues/306). Now, it is a collaborative effort of
