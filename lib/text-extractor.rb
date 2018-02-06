@@ -1,0 +1,1 @@
+require 'text_extractor'
