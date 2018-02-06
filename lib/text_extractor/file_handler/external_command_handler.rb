@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pathname'
+
 module TextExtractor
   class ExternalCommandHandler < FileHandler
     # TODO: Extract this to a proper module
@@ -22,7 +24,7 @@ module TextExtractor
 
     def text(file)
       cmd = @command.dup
-      cmd[cmd.index(FILE_PLACEHOLDER)] = file.path
+      cmd[cmd.index(FILE_PLACEHOLDER)] = Pathname(file).to_s
       shellout(cmd){ |io| io.read }.to_s
     end
 

@@ -6,6 +6,16 @@ describe TextExtractor::OpendocumentHandler do
 
   subject { described_class.new }
   
+  it 'Should accept a path string as input' do
+    file = 'spec/fixtures/files/text.odt'
+    expect(subject.text(file)).to match /lorem ipsum/
+  end
+
+  it 'Should accept a pathname as input' do
+    file = Pathname('spec/fixtures/files/text.odt')
+    expect(subject.text(file)).to match /lorem ipsum/
+  end
+
   it 'Should extract text from .odt files' do
     file = File.new('spec/fixtures/files/text.odt', 'r')
 
