@@ -17,4 +17,16 @@ describe TextExtractor::PlaintextHandler do
     expect(subject.text(file)).to match /lorem/
     expect(TextExtractor::Resolver.new(file, 'text/csv').text).to match /lorem/
   end
+
+  it 'Should accept a path string as input' do
+    file = 'spec/fixtures/files/text.txt'
+    expect(subject.text(file)).to match /lorem/
+    expect(TextExtractor::Resolver.new(file, 'text/plain').text).to match /lorem ipsum/
+  end
+
+  it 'Should accept a pathname as input' do
+    file = Pathname('spec/fixtures/files/text.txt')
+    expect(subject.text(file)).to match /lorem/
+    expect(TextExtractor::Resolver.new(file, 'text/plain').text).to match /lorem ipsum/
+  end
 end

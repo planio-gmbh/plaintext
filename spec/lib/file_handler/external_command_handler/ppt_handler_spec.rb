@@ -14,6 +14,17 @@ describe TextExtractor::PptHandler do
       expect(TextExtractor::Resolver.new(file, 'application/powerpoint').text).to match /Die Java Virtual Machine/
       expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-powerpoint').text).to match /Die Java Virtual Machine/
     end
+
+    it 'Should accept a pathname as input' do
+      file = 'spec/fixtures/files/presentation.ppt'
+      expect(subject.text(file)).to match /Die Java Virtual Machine/
+    end
+
+    it 'Should accept a path string as input' do
+      file = Pathname('spec/fixtures/files/presentation.ppt')
+      expect(subject.text(file)).to match /Die Java Virtual Machine/
+    end
+
   else
     warn "#{described_class.name} could not be tested as external program is not available."
   end

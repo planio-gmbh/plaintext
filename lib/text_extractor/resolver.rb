@@ -17,8 +17,6 @@ module TextExtractor
         text.strip!
         text.mb_chars.compose.limit(MAX_FULLTEXT_LENGTH).to_s
       end
-    rescue Exception => e
-      raise e unless e.is_a? StandardError # re-raise Signals / SyntaxErrors etc
     end
 
     private
