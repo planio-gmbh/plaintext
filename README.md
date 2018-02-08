@@ -12,6 +12,7 @@ This gem wraps command line tools to extract plain text from typical files such 
     - Presentation
     - Text
     - Spreadsheet
+- Image files (png, jpeg, tiff)
 - Plaintext (txt)
 - Comma separated vector (csv)
 
@@ -78,6 +79,11 @@ text_extractors:
     - /usr/local/bin/unrtf
     - --text
     - __FILE__
+
+  tesseract:
+    - /usr/local/bin/tesseract
+    - __FILE__
+    - stdout
 
   catdoc:
     - /usr/bin/textutil
