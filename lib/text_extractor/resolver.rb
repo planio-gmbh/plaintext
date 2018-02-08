@@ -32,6 +32,7 @@ module TextExtractor
         TextExtractor::OpendocumentHandler,
         TextExtractor::DocxHandler, TextExtractor::XlsxHandler, TextExtractor::PptxHandler,
         TextExtractor::DocHandler, TextExtractor::XlsHandler, TextExtractor::PptHandler,
+        TextExtractor::ImageHandler,
         TextExtractor::RtfHandler,
         TextExtractor::PlaintextHandler
     ].map(&:new)
