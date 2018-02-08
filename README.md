@@ -14,7 +14,7 @@ This gem wraps command line tools to extract plain text from typical files such 
     - Spreadsheet
 - Image files (png, jpeg, tiff)
 - Plaintext (txt)
-- Comma separated vector (csv)
+- Comma-separated values (csv)
 
 ## Acknowledgements
 
