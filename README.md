@@ -52,7 +52,7 @@ Please overwrite `TextExtractor::Configuration.load`.
 
 On linux the default configuration should work. However, make sure that the following packages are installed
 
-    $ apt-get install catdoc unrtf poppler-utils
+    $ apt-get install catdoc unrtf poppler-utils tesseract-ocr
 
 ### Mac OS X
 
@@ -61,8 +61,7 @@ extract text from presentation and spreadsheets.
 
 Please use homebrew to install the missing command line tools.
 
-    $ brew install poppler
-    $ brew install unrtf
+    $ brew install unrtf poppler tesseract
     
 The `text-extraction.yml` should look like this:
     
