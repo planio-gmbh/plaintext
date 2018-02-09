@@ -6,7 +6,7 @@
 # commands should write the resulting plain text to STDOUT. Use __FILE__ as
 # placeholder for the file path. The values below are the defaults.
 text_extractors:
-  # apt install poppler-utils
+  # apt-get install poppler-utils
   # pdftotext:
   #   - /usr/bin/pdftotext
   #   - -enc
@@ -14,13 +14,13 @@ text_extractors:
   #   - __FILE__
   #   - '-'
 
-  # apt install unrtf
+  # apt-get install unrtf
   # unrtf:
   #   - /usr/bin/unrtf
   #   - --text
   #   - __FILE__
 
-  # apt install catdoc
+  # apt-get install catdoc
   # catdoc:
   #   - /usr/bin/catdoc
   #   - -dutf-8
@@ -31,5 +31,11 @@ text_extractors:
   #   - __FILE__
   # catppt:
   #   - /usr/bin/catppt
+  #   - -dutf-8
+  #   - __FILE__
+
+  # apt-get install tesseract-ocr
+  # tesseract:
+  #   - /usr/bin/tesseract
   #   - -dutf-8
   #   - __FILE__
