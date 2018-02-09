@@ -44,6 +44,16 @@ Or install it yourself as:
 In a Rails application save `text-extractor.yml.example` in `config/text-extractor.yml` and overwrite the settings to 
 your needs.
 
+Then load that configuration file in an initializer. Add the following lines to `config/initializers/text_extractor.rb`:
+
+```ruby
+file_name = File.join([Rails.root.to_s, 'config', 'text_extractor.yml'])
+if File.file?(file_name)
+  config_file = File.read(file_name)
+  TextExtractor::Configuration.load(config_file)
+end
+````
+
 #### Plain Ruby
 
 Please overwrite `TextExtractor::Configuration.load`.

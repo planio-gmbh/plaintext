@@ -7,7 +7,7 @@ module TextExtractor
     ].freeze
     def initialize
       @content_type = 'application/pdf'
-      @command = TextExtractor::FileHandler::TEXT_EXTRACTORS['pdftotext'] || DEFAULT
+      @command = TextExtractor::Configuration['pdftotext'] || DEFAULT
     end
   end
 end

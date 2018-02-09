@@ -11,7 +11,7 @@ module TextExtractor
     ]
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::FileHandler::TEXT_EXTRACTORS['xls2csv'] || DEFAULT
+      @command = TextExtractor::Configuration['xls2csv'] || DEFAULT
     end
     def text(*_)
       if str = super

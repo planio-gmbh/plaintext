@@ -2,7 +2,6 @@
 
 module TextExtractor
   class FileHandler
-    TEXT_EXTRACTORS = TextExtractor::Configuration['text_extractors'] || {}
     def accept?(content_type)
       if @content_type
         content_type == @content_type
