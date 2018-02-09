@@ -14,7 +14,7 @@ This gem wraps command line tools to extract plain text from typical files such 
     - Spreadsheet
 - Image files (png, jpeg, tiff), such as screenshots and scanned documents, through character recognition (OCR)
 - Plaintext (txt)
-- Comma separated vector (csv)
+- Comma-separated values (csv)
 
 ## Acknowledgements
 
@@ -61,7 +61,7 @@ extract text from presentation and spreadsheets.
 
 Please use homebrew to install the missing command line tools.
 
-    $ brew install poppler unrtf tesseract
+    $ brew install unrtf poppler tesseract
     
 The `text-extraction.yml` should look like this:
     
