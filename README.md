@@ -76,30 +76,29 @@ Please use homebrew to install the missing command line tools.
 The `text-extraction.yml` should look like this:
     
 ```yml
-text_extractors:
-  pdftotext:
-   - /usr/local/bin/pdftotext
-   - -enc
-   - UTF-8
-   - __FILE__
-   - '-'
+pdftotext:
+  - /usr/local/bin/pdftotext
+  - -enc
+  - UTF-8
+  - __FILE__
+  - '-'
 
-  unrtf:
-    - /usr/local/bin/unrtf
-    - --text
-    - __FILE__
+unrtf:
+  - /usr/local/bin/unrtf
+  - --text
+  - __FILE__
 
-  tesseract:
-    - /usr/local/bin/tesseract
-    - __FILE__
-    - stdout
+tesseract:
+  - /usr/local/bin/tesseract
+  - __FILE__
+  - stdout
 
-  catdoc:
-    - /usr/bin/textutil
-    - -convert
-    - txt
-    - -stdout
-    - __FILE__
+catdoc:
+  - /usr/bin/textutil
+  - -convert
+  - txt
+  - -stdout
+  - __FILE__
 ```
 
 ## Usage

@@ -5,37 +5,37 @@
 #
 # commands should write the resulting plain text to STDOUT. Use __FILE__ as
 # placeholder for the file path. The values below are the defaults.
-text_extractors:
-  # apt-get install poppler-utils
-  # pdftotext:
-  #   - /usr/bin/pdftotext
-  #   - -enc
-  #   - UTF-8
-  #   - __FILE__
-  #   - '-'
 
-  # apt-get install unrtf
-  # unrtf:
-  #   - /usr/bin/unrtf
-  #   - --text
-  #   - __FILE__
+# apt-get install poppler-utils
+# pdftotext:
+#   - /usr/bin/pdftotext
+#   - -enc
+#   - UTF-8
+#   - __FILE__
+#   - '-'
 
-  # apt-get install catdoc
-  # catdoc:
-  #   - /usr/bin/catdoc
-  #   - -dutf-8
-  #   - __FILE__
-  # xls2csv:
-  #   - /usr/bin/xls2csv
-  #   - -dutf-8
-  #   - __FILE__
-  # catppt:
-  #   - /usr/bin/catppt
-  #   - -dutf-8
-  #   - __FILE__
+# apt-get install unrtf
+# unrtf:
+#   - /usr/bin/unrtf
+#   - --text
+#   - __FILE__
 
-  # apt-get install tesseract-ocr
-  # tesseract:
-  #   - /usr/bin/tesseract
-  #   - -dutf-8
-  #   - __FILE__
+# apt-get install catdoc
+# catdoc:
+#   - /usr/bin/catdoc
+#   - -dutf-8
+#   - __FILE__
+# xls2csv:
+#   - /usr/bin/xls2csv
+#   - -dutf-8
+#   - __FILE__
+# catppt:
+#   - /usr/bin/catppt
+#   - -dutf-8
+#   - __FILE__
+
+# apt-get install tesseract-ocr
+# tesseract:
+#   - /usr/bin/tesseract
+#   - -dutf-8
+#   - __FILE__
