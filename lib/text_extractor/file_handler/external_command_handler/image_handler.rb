@@ -12,7 +12,7 @@ module TextExtractor
     ].freeze
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::FileHandler::TEXT_EXTRACTORS['tesseract'] || DEFAULT
+      @command = TextExtractor::Configuration['tesseract'] || DEFAULT
     end
   end
 end

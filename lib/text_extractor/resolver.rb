@@ -2,14 +2,33 @@
 
 module TextExtractor
   class Resolver
-    MAX_FULLTEXT_LENGTH = 4194304 # 4 megabytes
+    MAX_FULLTEXT_LENGTH = 4_194_304 # 4 megabytes
+
+    class << self
+      attr_accessor :cached_file_handlers
+
+      HANDLERS = [
+          TextExtractor::PdfHandler,
+          TextExtractor::OpendocumentHandler,
+          TextExtractor::DocxHandler, TextExtractor::XlsxHandler, TextExtractor::PptxHandler,
+          TextExtractor::DocHandler, TextExtractor::XlsHandler, TextExtractor::PptHandler,
+          TextExtractor::ImageHandler,
+          TextExtractor::RtfHandler,
+          TextExtractor::PlaintextHandler
+      ].freeze
+
+      def file_handlers
+        return self.cached_file_handlers if self.cached_file_handlers.present?
+        self.cached_file_handlers = HANDLERS.map(&:new)
+      end
+    end
 
     def initialize(file, content_type = nil)
       @file = file
       @content_type = content_type
     end
 
-    # returns the extracted fulltext or nil if no matching handler was found
+    # Returns the extracted fulltext or nil if no matching handler was found
     # for the file type.
     def text
       if handler = find_handler and text = handler.text(@file)
@@ -22,19 +41,8 @@ module TextExtractor
     private
 
     def find_handler
-      @@file_handlers.detect{|h| h.accept? @content_type }
+      self.class.file_handlers.detect { |h| h.accept? @content_type }
     end
 
-    # the handler chain. List most specific handlers first and more general
-    # (fallback) handlers later.
-    @@file_handlers = [
-        TextExtractor::PdfHandler,
-        TextExtractor::OpendocumentHandler,
-        TextExtractor::DocxHandler, TextExtractor::XlsxHandler, TextExtractor::PptxHandler,
-        TextExtractor::DocHandler, TextExtractor::XlsHandler, TextExtractor::PptHandler,
-        TextExtractor::ImageHandler,
-        TextExtractor::RtfHandler,
-        TextExtractor::PlaintextHandler
-    ].map(&:new)
   end
 end

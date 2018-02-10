@@ -11,7 +11,7 @@ module TextExtractor
     ]
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::FileHandler::TEXT_EXTRACTORS['catdoc'] || DEFAULT
+      @command = TextExtractor::Configuration['catdoc'] || DEFAULT
     end
   end
 end
