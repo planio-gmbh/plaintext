@@ -1,4 +1,4 @@
-# Text-Extractor
+# text_extractor
 
 This gem wraps command line tools to extract plain text from typical files such as
 
@@ -28,7 +28,7 @@ as both systems tackle the identical challenge to extract plain text from attach
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'text-extractor'
+gem 'text_extractor'
 ```
 
 And then execute:
@@ -37,11 +37,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install text-extractor
+    $ gem install text_extractor
 
 #### Rails
 
-In a Rails application save `text-extractor.yml.example` in `config/text-extractor.yml` and overwrite the settings to 
+In a Rails application save `text_extractor.yml.example` in `config/text_extractor.yml` and overwrite the settings to 
 your needs.
 
 Then load that configuration file in an initializer. Add the following lines to `config/initializers/text_extractor.rb`:
@@ -111,7 +111,7 @@ fulltext = TextExtractor::Resolver.new(file, content_type).text
 
 ## License
 
-The `text-extractor` gem is free software; you can redistribute it and/or modify it under the terms of the GNU General 
+The `text_extractor` gem is free software; you can redistribute it and/or modify it under the terms of the GNU General 
 Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any 
 later version.
 
@@ -123,5 +123,5 @@ You should have received a copy of the GNU General Public License along with the
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/planio-gmbh/text-extractor.
+Bug reports and pull requests are welcome on GitHub at https://github.com/planio-gmbh/text_extractor.
 
