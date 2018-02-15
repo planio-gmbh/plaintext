@@ -1,4 +1,4 @@
-# text_extractor
+# plaintext
 
 This gem wraps command line tools to extract plain text from typical files such as
 
@@ -28,7 +28,7 @@ as both systems tackle the identical challenge to extract plain text from attach
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'text_extractor'
+gem 'plaintext'
 ```
 
 And then execute:
@@ -37,26 +37,26 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install text_extractor
+    $ gem install plaintext
 
 #### Rails
 
-In a Rails application save `text_extractor.yml.example` in `config/text_extractor.yml` and overwrite the settings to 
+In a Rails application save `plaintext.yml.example` in `config/plaintext.yml` and overwrite the settings to 
 your needs.
 
-Then load that configuration file in an initializer. Add the following lines to `config/initializers/text_extractor.rb`:
+Then load that configuration file in an initializer. Add the following lines to `config/initializers/plaintext.rb`:
 
 ```ruby
-file_name = File.join([Rails.root.to_s, 'config', 'text_extractor.yml'])
+file_name = File.join([Rails.root.to_s, 'config', 'plaintext'])
 if File.file?(file_name)
   config_file = File.read(file_name)
-  TextExtractor::Configuration.load(config_file)
+  Plaintext::Configuration.load(config_file)
 end
 ````
 
 #### Plain Ruby
 
-Please overwrite `TextExtractor::Configuration.load`.
+Please overwrite `Plaintext::Configuration.load`.
 
 ### Linux
 
@@ -73,7 +73,7 @@ Please use homebrew to install the missing command line tools.
 
     $ brew install unrtf poppler tesseract
     
-The `text-extraction.yml` should look like this:
+The `plaintext.yml` should look like this:
     
 ```yml
 pdftotext:
@@ -106,12 +106,12 @@ catdoc:
 ```ruby
 # `file` is of type File.
 # `content_type` is a String.
-fulltext = TextExtractor::Resolver.new(file, content_type).text
+fulltext = Plaintext::Resolver.new(file, content_type).text
 ```
 
 ## License
 
-The `text_extractor` gem is free software; you can redistribute it and/or modify it under the terms of the GNU General 
+The `plaintext` gem is free software; you can redistribute it and/or modify it under the terms of the GNU General 
 Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any 
 later version.
 
@@ -123,5 +123,5 @@ You should have received a copy of the GNU General Public License along with the
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/planio-gmbh/text_extractor.
+Bug reports and pull requests are welcome on GitHub at https://github.com/planio-gmbh/plaintext.
 

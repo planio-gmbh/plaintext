@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::PptxHandler do
+describe Plaintext::PptxHandler do
 
   subject { described_class.new }
 
@@ -12,13 +12,13 @@ describe TextExtractor::PptxHandler do
 
     expect(subject.text(file)).to match /Slide two/
 
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.presentationml.presentation').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.presentationml.presentation').text).to(
         match /The Title find me Slide two/
     )
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.presentationml.slideshow').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.presentationml.slideshow').text).to(
         match /The Title find me Slide two/
     )
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-powerpoint.template.macroEnabled.12').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.ms-powerpoint.template.macroEnabled.12').text).to(
         match /The Title find me Slide two/
     )
   end

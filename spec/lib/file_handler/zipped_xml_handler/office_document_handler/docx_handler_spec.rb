@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::DocxHandler do
+describe Plaintext::DocxHandler do
 
   subject { described_class.new }
 
@@ -12,7 +12,7 @@ describe TextExtractor::DocxHandler do
     expect(subject.text(file)).to(
       match /lorem ipsum/
     )
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document').text).to(
       match /lorem ipsum fulltext find me!/
     )
   end

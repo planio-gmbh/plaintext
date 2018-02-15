@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class ImageHandler < ExternalCommandHandler
     CONTENT_TYPES = [
         'image/jpeg',
@@ -12,7 +12,7 @@ module TextExtractor
     ].freeze
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::Configuration['tesseract'] || DEFAULT
+      @command = Plaintext::Configuration['tesseract'] || DEFAULT
     end
   end
 end

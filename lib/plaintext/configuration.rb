@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   module Configuration
     class << self
       attr_accessor :config
@@ -19,7 +19,7 @@ module TextExtractor
         if file_config.is_a?(Hash)
           self.config = file_config
         else
-          warn "`config_file` is not a valid TextExtractor configuration file, ignoring."
+          warn "`config_file` is not a valid Plaintext configuration file, ignoring."
         end
       end
     end

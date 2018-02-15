@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class FileHandler
     def accept?(content_type)
       if @content_type

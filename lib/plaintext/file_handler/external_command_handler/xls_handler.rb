@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class XlsHandler < ExternalCommandHandler
     CONTENT_TYPES = [
       'application/vnd.ms-excel',
@@ -11,7 +11,7 @@ module TextExtractor
     ]
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::Configuration['xls2csv'] || DEFAULT
+      @command = Plaintext::Configuration['xls2csv'] || DEFAULT
     end
     def text(*_)
       if str = super

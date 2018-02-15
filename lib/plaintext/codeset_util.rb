@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   module CodesetUtil
     def self.to_utf8(str, encoding)
       return str if str.nil?

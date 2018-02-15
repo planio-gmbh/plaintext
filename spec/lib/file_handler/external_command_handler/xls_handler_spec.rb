@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::XlsHandler do
+describe Plaintext::XlsHandler do
 
   subject { described_class.new }
 
@@ -13,8 +13,8 @@ describe TextExtractor::XlsHandler do
       expect(subject.text(file)).to match /ipsum fulltext find me!/
       expect(subject.text(file)).to match /ipsum fulltext find me!/
 
-      expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-excel').text).to match /ipsum fulltext find me!/
-      expect(TextExtractor::Resolver.new(file, 'application/excel').text).to match /ipsum fulltext find me!/
+      expect(Plaintext::Resolver.new(file, 'application/vnd.ms-excel').text).to match /ipsum fulltext find me!/
+      expect(Plaintext::Resolver.new(file, 'application/excel').text).to match /ipsum fulltext find me!/
     end
   else
     warn "#{described_class.name} could not be tested as external program is not available."

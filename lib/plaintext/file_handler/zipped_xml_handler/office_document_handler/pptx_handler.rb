@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class PptxHandler < OfficeDocumentHandler
     CONTENT_TYPES = [
         'application/vnd.openxmlformats-officedocument.presentationml.presentation',

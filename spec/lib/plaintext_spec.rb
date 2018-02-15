@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-describe TextExtractor do
+describe Plaintext do
   it 'has a version number' do
-    expect(TextExtractor::VERSION).not_to be nil
+    expect(Plaintext::VERSION).not_to be nil
   end
 end

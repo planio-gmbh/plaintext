@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class DocHandler < ExternalCommandHandler
     CONTENT_TYPES = [
         'application/vnd.ms-word',
@@ -11,7 +11,7 @@ module TextExtractor
     ]
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::Configuration['catdoc'] || DEFAULT
+      @command = Plaintext::Configuration['catdoc'] || DEFAULT
     end
   end
 end

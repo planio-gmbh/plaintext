@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::PptHandler do
+describe Plaintext::PptHandler do
 
   subject { described_class.new }
 
@@ -11,8 +11,8 @@ describe TextExtractor::PptHandler do
       file = File.new('spec/fixtures/files/presentation.ppt', 'r')
 
       expect(subject.text(file)).to match /Die Java Virtual Machine/
-      expect(TextExtractor::Resolver.new(file, 'application/powerpoint').text).to match /Die Java Virtual Machine/
-      expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-powerpoint').text).to match /Die Java Virtual Machine/
+      expect(Plaintext::Resolver.new(file, 'application/powerpoint').text).to match /Die Java Virtual Machine/
+      expect(Plaintext::Resolver.new(file, 'application/vnd.ms-powerpoint').text).to match /Die Java Virtual Machine/
     end
 
     it 'Should accept a pathname as input' do

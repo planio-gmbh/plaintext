@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::OpendocumentHandler do
+describe Plaintext::OpendocumentHandler do
 
   subject { described_class.new }
   
@@ -20,7 +20,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/text.odt', 'r')
 
     expect(subject.text(file)).to match /lorem ipsum/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.text').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.text').text).to(
         match /lorem ipsum fulltext find me!/
     )
   end
@@ -29,7 +29,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/text.ott', 'r')
 
     expect(subject.text(file)).to match /lorem ipsum/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.text-template').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.text-template').text).to(
         match /lorem ipsum fulltext find me!/
     )
   end
@@ -38,7 +38,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/presentation.odp', 'r')
 
     expect(subject.text(file)).to match /The Title find me Slide two Click To Add Text/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.presentation').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.presentation').text).to(
         match /The Title find me Slide two/
     )
   end
@@ -47,7 +47,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/presentation.otp', 'r')
 
     expect(subject.text(file)).to match /The Title find me Slide two Click To Add Text/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.presentation-template').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.presentation-template').text).to(
         match /The Title find me Slide two/
     )
   end
@@ -56,7 +56,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/spreadsheet.ods', 'r')
 
     expect(subject.text(file)).to match /lorem ipsum/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.spreadsheet').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.spreadsheet').text).to(
         match /lorem ipsum fulltext find me!/
     )
   end
@@ -65,7 +65,7 @@ describe TextExtractor::OpendocumentHandler do
     file = File.new('spec/fixtures/files/spreadsheet.ots', 'r')
 
     expect(subject.text(file)).to match /lorem ipsum/
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.oasis.opendocument.spreadsheet-template').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.oasis.opendocument.spreadsheet-template').text).to(
         match /lorem ipsum fulltext find me!/
     )
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class Resolver
     MAX_FULLTEXT_LENGTH = 4_194_304 # 4 megabytes
 
@@ -8,13 +8,13 @@ module TextExtractor
       attr_accessor :cached_file_handlers
 
       HANDLERS = [
-          TextExtractor::PdfHandler,
-          TextExtractor::OpendocumentHandler,
-          TextExtractor::DocxHandler, TextExtractor::XlsxHandler, TextExtractor::PptxHandler,
-          TextExtractor::DocHandler, TextExtractor::XlsHandler, TextExtractor::PptHandler,
-          TextExtractor::ImageHandler,
-          TextExtractor::RtfHandler,
-          TextExtractor::PlaintextHandler
+          Plaintext::PdfHandler,
+          Plaintext::OpendocumentHandler,
+          Plaintext::DocxHandler, Plaintext::XlsxHandler, Plaintext::PptxHandler,
+          Plaintext::DocHandler, Plaintext::XlsHandler, Plaintext::PptHandler,
+          Plaintext::ImageHandler,
+          Plaintext::RtfHandler,
+          Plaintext::PlaintextHandler
       ].freeze
 
       def file_handlers

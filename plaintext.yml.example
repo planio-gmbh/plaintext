@@ -1,5 +1,5 @@
 # This is an example configuration file. Copy this file to your application config folder. In a Rails application that
-# would be `<Rails.root>/config/text_extractor.yml`
+# would be `<Rails.root>/config/plaintext.yml`
 #
 # Text extraction helper programs.
 #

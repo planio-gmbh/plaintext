@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class PptHandler < ExternalCommandHandler
     CONTENT_TYPES = [
         'application/vnd.ms-powerpoint',
@@ -11,7 +11,7 @@ module TextExtractor
     ]
     def initialize
       @content_types = CONTENT_TYPES
-      @command = TextExtractor::Configuration['catppt'] || DEFAULT
+      @command = Plaintext::Configuration['catppt'] || DEFAULT
     end
   end
 end

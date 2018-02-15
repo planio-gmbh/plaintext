@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::DocHandler do
+describe Plaintext::DocHandler do
 
   subject { described_class.new }
 
@@ -11,8 +11,8 @@ describe TextExtractor::DocHandler do
       file = File.new('spec/fixtures/files/text.doc', 'r')
 
       expect(subject.text(file)).to match /lorem ipsum fulltext find me!/
-      expect(TextExtractor::Resolver.new(file, 'application/msword').text).to match /lorem ipsum fulltext find me!/
-      expect(TextExtractor::Resolver.new(file, 'application/vnd.ms-word').text).to match /lorem ipsum fulltext find me!/
+      expect(Plaintext::Resolver.new(file, 'application/msword').text).to match /lorem ipsum fulltext find me!/
+      expect(Plaintext::Resolver.new(file, 'application/vnd.ms-word').text).to match /lorem ipsum fulltext find me!/
     end
 
     it 'Should accept a pathname as input' do

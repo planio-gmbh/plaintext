@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe TextExtractor::XlsxHandler do
+describe Plaintext::XlsxHandler do
 
   subject { described_class.new }
 
@@ -11,7 +11,7 @@ describe TextExtractor::XlsxHandler do
 
     expect(subject.text(file)).to match /lorem ipsum/
 
-    expect(TextExtractor::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet').text).to(
+    expect(Plaintext::Resolver.new(file, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet').text).to(
         match /lorem ipsum fulltext find me!/
     )
   end

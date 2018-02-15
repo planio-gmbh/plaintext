@@ -2,7 +2,7 @@
 
 require 'pathname'
 
-module TextExtractor
+module Plaintext
   class ExternalCommandHandler < FileHandler
     # TODO: Extract this to a proper module
     # Executes the given command through IO.popen and yields an IO object

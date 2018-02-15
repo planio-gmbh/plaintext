@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   # Extractor for Open / Libre Office formats
   class OpendocumentHandler < ZippedXmlHandler
     CONTENT_TYPES = [

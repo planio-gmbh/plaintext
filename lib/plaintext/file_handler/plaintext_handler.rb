@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class PlaintextHandler < FileHandler
     CONTENT_TYPES = %w(text/csv text/plain)
     def initialize
@@ -8,7 +8,7 @@ module TextExtractor
     end
 
     def text(file)
-      TextExtractor::CodesetUtil.to_utf8 IO.read(file), 'UTF-8'
+      Plaintext::CodesetUtil.to_utf8 IO.read(file), 'UTF-8'
     end
   end
 end

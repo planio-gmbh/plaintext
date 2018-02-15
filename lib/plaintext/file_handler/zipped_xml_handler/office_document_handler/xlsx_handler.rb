@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   class XlsxHandler < OfficeDocumentHandler
     def initialize
       super

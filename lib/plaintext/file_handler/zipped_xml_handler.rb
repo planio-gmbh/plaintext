@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module TextExtractor
+module Plaintext
   # Handler base class for XML based (MS / Open / Libre) office documents.
   class ZippedXmlHandler < FileHandler
     require 'zip'
