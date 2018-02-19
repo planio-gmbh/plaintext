@@ -1,4 +1,4 @@
-# plaintext
+# plaintext [![Build Status](https://travis-ci.org/planio-gmbh/plaintext.svg?branch=master)](https://travis-ci.org/planio-gmbh/plaintext)
 
 This gem wraps command line tools to extract plain text from typical files such as
 
