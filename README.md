@@ -47,10 +47,10 @@ your needs.
 Then load that configuration file in an initializer. Add the following lines to `config/initializers/plaintext.rb`:
 
 ```ruby
-file_name = File.join([Rails.root.to_s, 'config', 'plaintext'])
-if File.file?(file_name)
-  config_file = File.read(file_name)
-  Plaintext::Configuration.load(config_file)
+path = Rails.root.join 'config', 'plaintext.yml'
+if File.file?(path)
+  config = File.read(path)
+  Plaintext::Configuration.load(config)
 end
 ````
 
