@@ -11,5 +11,27 @@ module Plaintext
         false
       end
     end
+
+    # use `#set(max_size: 1.megabyte)` to give an upper limit of data to be read.
+    #
+    # By default, all data (whole file / command output) will be read which can
+    # be a problem with huge text files (eg SQL dumps)
+    def set(args = {})
+      options.update args
+      self
+    end
+
+    private
+
+    # maximum number of bytes to read from external command output or text
+    # files
+    def max_size
+      options[:max_size]
+    end
+
+    def options
+      @options ||= {}
+    end
+
   end
 end

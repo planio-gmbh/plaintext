@@ -22,11 +22,12 @@ module Plaintext
 
     FILE_PLACEHOLDER = '__FILE__'.freeze
 
-    def text(file)
+    def text(file, options = {})
       cmd = @command.dup
       cmd[cmd.index(FILE_PLACEHOLDER)] = Pathname(file).to_s
-      shellout(cmd){ |io| io.read }.to_s
+      shellout(cmd){ |io| read io, options[:max_size] }.to_s
     end
+
 
     def accept?(content_type)
       super and available?
@@ -38,6 +39,12 @@ module Plaintext
 
     def self.available?
       new.available?
+    end
+
+    private
+
+    def read(io, max_size = nil)
+      io.read(max_size)
     end
   end
 end

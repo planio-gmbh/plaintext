@@ -2,7 +2,9 @@
 
 module Plaintext
   class Resolver
-    MAX_FULLTEXT_LENGTH = 4_194_304 # 4 megabytes
+
+    # maximum length of returned plain text in bytes. Default: 4MB
+    attr_accessor :max_plaintext_bytes
 
     class << self
       attr_accessor :cached_file_handlers
@@ -26,15 +28,19 @@ module Plaintext
     def initialize(file, content_type = nil)
       @file = file
       @content_type = content_type
+      @max_plaintext_bytes = 4_194_304 # 4 megabytes
     end
+
 
     # Returns the extracted fulltext or nil if no matching handler was found
     # for the file type.
     def text
-      if handler = find_handler and text = handler.text(@file)
-        text.gsub! /\s+/m, ' '
+      if handler = find_handler and
+          text = handler.text(@file, max_size: max_plaintext_bytes)
+
+        text.gsub!(/\s+/m, ' ')
         text.strip!
-        text.mb_chars.compose.limit(MAX_FULLTEXT_LENGTH).to_s
+        text.mb_chars.compose.limit(max_plaintext_bytes).to_s
       end
     end
 

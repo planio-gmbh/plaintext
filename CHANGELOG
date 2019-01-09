@@ -6,9 +6,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-01-09
+
+### Added
+- `:max_plaintext_bytes` option to place an upper limit on the number of bytes
+  returned. Also limits the amount of data that is actually read from plain text
+  files and external command output to limit memory usage. Set this on the
+  resolver object.
+
+### Changed
+- the unrtf handler now strips the preamble which unrtf adds to its output.
+- text from external command handlers is now converted to UTF-8 before it's returned.
+
+
 ## [0.2.0] - 2018-12-22
+
 ### Changed
 - relaxed Nokogiri dependency to '~> 1.8' for Redmine 4 (which uses 1.9)
+
 
 ## [0.1.0] - 2018-02-15
 - Initial release

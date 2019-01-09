@@ -37,7 +37,7 @@ module Plaintext
       end
     end
 
-    def text(file)
+    def text(file, options = {})
       Zip::File.open(file) do |zip_file|
         zip_file.each do |entry|
           if entry.name == @file_name

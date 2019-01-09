@@ -14,7 +14,7 @@ module Plaintext
       @namespace_uri = 'http://schemas.openxmlformats.org/drawingml/2006/main'
     end
 
-    def text(file)
+    def text(file, options = {})
       slides = []
       Zip::File.open(file) do |zip_file|
         zip_file.each do |entry|

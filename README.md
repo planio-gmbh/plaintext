@@ -109,6 +109,9 @@ catdoc:
 fulltext = Plaintext::Resolver.new(file, content_type).text
 ```
 
+To limit the number of bytes returned (default is 4MB), set the
+`max_plaintext_bytes` property on the resolver instance before calling `text`.
+
 ## License
 
 The `plaintext` gem is free software; you can redistribute it and/or modify it under the terms of the GNU General 
