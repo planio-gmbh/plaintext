@@ -23,6 +23,11 @@ describe Plaintext::RtfHandler do
       expect(r.text).to eq "lorem"
     end
 
+    it 'Should return a utf8 encoded string' do
+      file = File.new('spec/fixtures/files/text.rtf', 'r')
+      expect(subject.text(file).encoding.name).to eq 'UTF-8'
+    end
+
   else
     warn "#{described_class.name} could not be tested as external program is not available."
   end

@@ -44,7 +44,7 @@ module Plaintext
     private
 
     def read(io, max_size = nil)
-      io.read(max_size)
+      Plaintext::CodesetUtil.to_utf8 io.read(max_size), "ASCII-8BIT"
     end
   end
 end
