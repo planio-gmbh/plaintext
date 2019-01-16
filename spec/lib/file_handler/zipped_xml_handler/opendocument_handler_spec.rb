@@ -70,5 +70,19 @@ describe Plaintext::OpendocumentHandler do
     )
   end
 
+  it 'Should only extract text up to given size limit' do
+    file = File.new('spec/fixtures/files/spreadsheet.ots', 'r')
+    expect(subject.text(file, max_size: 2)).to eq 'lo'
+
+    r = Plaintext::Resolver.new(file,
+                                'application/vnd.oasis.opendocument.spreadsheet')
+    r.max_plaintext_bytes = 3
+    expect(r.text).to eq "lor"
+  end
+
+  it 'Should return a utf8 encoded string' do
+    file = File.new('spec/fixtures/files/spreadsheet.ots', 'r')
+    expect(subject.text(file).encoding.name).to eq 'UTF-8'
+  end
 
 end
