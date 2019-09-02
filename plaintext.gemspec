@@ -12,7 +12,8 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Extract plain text from most common office documents.'
   spec.description   = "Extract text from common office files. Based on the file's content type a command line tool is selected to do the job."
   spec.homepage      = 'https://github.com/planio-gmbh/plaintext'
-  
+  spec.license       = 'GPL-2.0'
+
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
