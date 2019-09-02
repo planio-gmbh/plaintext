@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2019-09-02
+- Set minimum Nokogiri version to 1.10.4. See CVE-2019-5477.
+- Fix encoding issues for PDFs.
+
 ## [0.3.1] - 2019-01-16
 
 ### Added

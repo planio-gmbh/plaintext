@@ -11,21 +11,23 @@ module Plaintext
     # Due to how popen works the command will be executed directly without
     # involving the shell if cmd is an array.
     require 'fileutils'
+
+    FILE_PLACEHOLDER = '__FILE__'.freeze
+    DEFAULT_STREAM_ENCODING = 'ASCII-8BIT'.freeze
+
     def shellout(cmd, options = {}, &block)
       mode = "r+"
       IO.popen(cmd, mode) do |io|
-        io.set_encoding("ASCII-8BIT") if io.respond_to?(:set_encoding)
+        set_stream_encoding(io)
         io.close_write unless options[:write_stdin]
         block.call(io) if block_given?
       end
     end
 
-    FILE_PLACEHOLDER = '__FILE__'.freeze
-
     def text(file, options = {})
       cmd = @command.dup
       cmd[cmd.index(FILE_PLACEHOLDER)] = Pathname(file).to_s
-      shellout(cmd){ |io| read io, options[:max_size] }.to_s
+      shellout(cmd) { |io| read io, options[:max_size] }.to_s
     end
 
 
@@ -41,10 +43,32 @@ module Plaintext
       new.available?
     end
 
+    protected
+
+    def utf8_stream?
+      false
+    end
+
     private
 
+    def set_stream_encoding(io)
+      return unless io.respond_to?(:set_encoding)
+
+      if utf8_stream?
+        io.set_encoding('UTF-8'.freeze)
+      else
+        io.set_encoding(DEFAULT_STREAM_ENCODING)
+      end
+    end
+
     def read(io, max_size = nil)
-      Plaintext::CodesetUtil.to_utf8 io.read(max_size), "ASCII-8BIT"
+      piece = io.read(max_size)
+
+      if utf8_stream?
+        piece
+      else
+        Plaintext::CodesetUtil.to_utf8 piece, DEFAULT_STREAM_ENCODING
+      end
     end
   end
 end
