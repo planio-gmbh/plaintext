@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.2] - 2019-09-02
 - Set minimum Nokogiri version to 1.10.4. See CVE-2019-5477.
 - Fix encoding issues for PDFs.
+- Bump development dependencies to bundler version 2 and
+  rake version 12
+- Update travis file to use ruby 2.6.4 and bundler 2.0.1
 
 ## [0.3.1] - 2019-01-16
 
