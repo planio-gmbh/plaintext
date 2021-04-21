@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.4] - 2021-04-21
 - Further relax the rubyzip version requirement to allow 2.x versions
 - Fix: Removed --quiet from unrtf arguments. In newer versions this seems to
   suppress the header line which we used as a marker to strip unrtf comments and
