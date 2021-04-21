@@ -3,7 +3,7 @@
 module Plaintext
   class RtfHandler < ExternalCommandHandler
     DEFAULT = [
-        '/usr/bin/unrtf', '--nopict', '--quiet', '--text', '__FILE__'
+        '/usr/bin/unrtf', '--nopict', '--text', '__FILE__'
     ].freeze
     def initialize
       @content_type = 'application/rtf'
