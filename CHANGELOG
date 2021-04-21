@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Further relax the rubyzip version requirement to allow 2.x versions
+- Fix: Removed --quiet from unrtf arguments. In newer versions this seems to
+  suppress the header line which we used as a marker to strip unrtf comments and
+  meta data from the command output.
+
 ## [0.3.3] - 2019-10-01
 - Relax rubyzip dependency. Our usage of rubyzip does not require adressing
   CVE-2019-16892 and thus is fine with 1.2, but applications using this Gem
