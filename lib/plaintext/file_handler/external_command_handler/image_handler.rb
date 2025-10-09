@@ -8,7 +8,7 @@ module Plaintext
         'image/tiff'
     ]
     DEFAULT = [
-        '/usr/bin/tesseract', '__FILE__', 'stdout'
+        '/usr/bin/tesseract', '__FILE__', 'stdout', 'quiet'
     ].freeze
     def initialize
       @content_types = CONTENT_TYPES
