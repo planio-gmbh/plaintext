@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.3.5] - 2025-10-14
+
+### Changed
+- Migrated CI from Travis to GitHub Actions
+
+### Fixed
+- Fix FrozenError when handler returns a frozen string
+- Fix Object#present? not being available in tests by requiring active_support before core_exts
+- Suppress tesseract extra output to reduce noise in OCR results
 
 ## [0.3.4] - 2021-04-21
 - Further relax the rubyzip version requirement to allow 2.x versions
