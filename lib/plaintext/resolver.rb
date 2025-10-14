@@ -36,7 +36,7 @@ module Plaintext
     # for the file type.
     def text
       if handler = find_handler and
-          text = handler.text(@file, max_size: max_plaintext_bytes)
+          text = +handler.text(@file, max_size: max_plaintext_bytes)
 
         text.gsub!(/\s+/m, ' ')
         text.strip!
