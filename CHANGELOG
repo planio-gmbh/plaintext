@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- PDF extraction now prints each link's URL next to its link text, e.g.
+  `link text [https://example.com/]`, when the installed pdftotext supports it
+  (`-urls`, added in poppler 26.09.0). Older binaries are detected and left
+  untouched, so extraction keeps working. Set `pdftotext_urls: false` to opt
+  out, or `true` to force it on. Because detection is based on the installed
+  binary, the extracted text of a PDF changes once pdftotext is upgraded to
+  26.09.0 or later even if the gem is not; re-indexing may be needed.
 - Replaced `String#mb_chars`, deprecated and to be removed in Rails 8.2, with
   `unicode_normalize` and `truncate_bytes`. File handlers are now expected to
   return UTF-8: `mb_chars` used to silently retag whatever it was given, which

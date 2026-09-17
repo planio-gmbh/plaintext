@@ -49,6 +49,26 @@ are not valid UTF-8 are replaced by a question mark, so make sure to pass
 whatever switch your command needs to produce UTF-8 — the defaults shipped with
 this gem already do.
 
+#### Link URLs in PDFs
+
+The URLs behind a PDF's links are printed next to their link text, e.g.
+`link text [https://example.com/]`. This relies on pdftotext's `-urls` option
+(added in poppler 26.09.0); when the installed binary does not support it, it
+is skipped and extraction is unaffected. `-urls` is also skipped for commands
+that use a mode it rejects (`-bbox`, `-bbox-layout`, `-tsv`, `-htmlmeta`).
+
+Set `pdftotext_urls` to override the auto-detection:
+
+```yml
+pdftotext_urls: false  # never pass -urls
+# pdftotext_urls: true # pass -urls even if not auto-detected; the binary must
+                       # support it, otherwise pdftotext exits with an error
+                       # and no text is extracted
+```
+
+Auto-detection probes the first element of the command, so if you wrap
+pdftotext (e.g. with `timeout`), set `pdftotext_urls: true` to enable it.
+
 Then load that configuration file in an initializer. Add the following lines to `config/initializers/plaintext.rb`:
 
 ```ruby

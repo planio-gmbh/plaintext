@@ -18,6 +18,11 @@
 #   - __FILE__
 #   - '-'
 
+# Link URLs are printed next to their link text, e.g. `link text
+# [https://example.com/]`, when pdftotext supports -urls (poppler >= 26.09.0).
+# Set to false to opt out, or true to force it on.
+# pdftotext_urls: false
+
 # apt-get install unrtf
 # unrtf has no switch to write UTF-8, its --text output is always Latin-1 and
 # is converted by the rtf handler. Replacing it with a command that does write
