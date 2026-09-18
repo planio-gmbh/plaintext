@@ -23,7 +23,8 @@ describe Plaintext::Resolver do
   end
 
   it 'still composes and limits the text if preserve_whitespace is set' do
-    allow(handler).to receive(:text).and_return("In der Küche\n\nist es warm")
+    # 'u' followed by a combining diaeresis
+    allow(handler).to receive(:text).and_return("In der Küche\n\nist es warm")
     resolver.preserve_whitespace = true
     resolver.max_plaintext_bytes = 14
 

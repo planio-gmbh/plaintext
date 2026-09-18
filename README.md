@@ -119,9 +119,13 @@ To limit the number of bytes returned (default is 4MB), set the
 
 All whitespace is collapsed into single spaces by default. To keep the line
 structure emitted by the extraction command instead, set `preserve_whitespace`
-on the resolver instance before calling `text`. That is the full document
-structure for PDF, RTF and plain text, while the handlers for the zipped XML
-formats join their text elements with a space.
+on the resolver instance before calling `text`. That keeps the document
+structure for plain text and the formats extracted by an external command
+(PDF, DOC, XLS, PPT, RTF and images), while the handlers for the zipped XML
+formats (OpenDocument and Office Open XML) join their text elements with a
+space. The text is returned as the handler emits it, so it may still contain
+form feeds between PDF pages, `\r\n` line endings and leading or trailing
+whitespace.
 
 ## License
 
