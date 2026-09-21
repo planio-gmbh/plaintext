@@ -3,6 +3,10 @@
 require 'pathname'
 
 module Plaintext
+  # Raised when an extraction command exits with a non-zero status. Whatever
+  # the command wrote to STDOUT before failing is discarded.
+  class CommandFailed < StandardError; end
+
   class ExternalCommandHandler < FileHandler
     # TODO: Extract this to a proper module
     # Executes the given command through IO.popen and yields an IO object
@@ -16,11 +20,13 @@ module Plaintext
 
     def shellout(cmd, options = {}, &block)
       mode = "r+"
-      IO.popen(cmd, mode) do |io|
+      result = IO.popen(cmd, mode) do |io|
         io.binmode
         io.close_write unless options[:write_stdin]
         block.call(io) if block_given?
       end
+      raise CommandFailed, "#{cmd.join(' ')} failed: #{$?}" unless $?.success?
+      result
     end
 
     def text(file, options = {})

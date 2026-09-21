@@ -36,4 +36,17 @@ describe Plaintext::ExternalCommandHandler do
   else
     warn "#{described_class.name} could not be tested as /bin/cat is not available."
   end
+
+  it 'Should raise if the command exits with a non-zero status' do
+    failing_handler = Class.new(described_class) do
+      def initialize
+        @content_type = 'text/plain'
+        @command = ['/bin/sh', '-c', 'exit 3', Plaintext::ExternalCommandHandler::FILE_PLACEHOLDER]
+      end
+    end.new
+    file = File.new('spec/fixtures/files/text.txt', 'r')
+
+    expect { failing_handler.text(file) }
+      .to raise_error(Plaintext::CommandFailed, %r{/bin/sh -c exit 3 .*text\.txt failed: pid \d+ exit 3})
+  end
 end

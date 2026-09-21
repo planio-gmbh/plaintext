@@ -114,6 +114,10 @@ catdoc:
 fulltext = Plaintext::Resolver.new(file, content_type).text
 ```
 
+`text` returns `nil` if no handler matches the content type and raises
+`Plaintext::CommandFailed` if an extraction command exits with a non-zero
+status, for example because it was given a switch it does not support.
+
 To limit the number of bytes returned (default is 4MB), set the
 `max_plaintext_bytes` property on the resolver instance before calling `text`.
 

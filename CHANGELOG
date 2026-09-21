@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   do, a custom handler returning binary strings now raises.
 
 ### Fixed
+- An extraction command exiting with a non-zero status now raises
+  `Plaintext::CommandFailed`. The exit status used to be ignored, so a
+  misconfigured or failing command silently yielded an empty string for every
+  file of its type.
 - Extracted text no longer has its non-ASCII characters replaced by question
   marks. Command output was read as ASCII-8BIT no matter what the command
   actually produced, and only the pdftotext handler was exempt, so umlauts and
