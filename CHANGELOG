@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-09-21
+
 ### Added
 - `Resolver#preserve_whitespace`: when set, the extracted text is returned
   with the whitespace the handler emitted instead of being collapsed into
@@ -20,12 +22,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   return UTF-8: `mb_chars` used to silently retag whatever it was given, which
   is what hid the encoding bugs fixed below. Handlers shipped with this gem all
   do, a custom handler returning binary strings now raises.
-
-### Fixed
 - An extraction command exiting with a non-zero status now raises
   `Plaintext::CommandFailed`. The exit status used to be ignored, so a
   misconfigured or failing command silently yielded an empty string for every
   file of its type.
+
+### Fixed
 - Extracted text no longer has its non-ASCII characters replaced by question
   marks. Command output was read as ASCII-8BIT no matter what the command
   actually produced, and only the pdftotext handler was exempt, so umlauts and
