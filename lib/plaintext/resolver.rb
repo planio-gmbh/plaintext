@@ -6,6 +6,10 @@ module Plaintext
     # maximum length of returned plain text in bytes. Default: 4MB
     attr_accessor :max_plaintext_bytes
 
+    # keep the whitespace emitted by the handler instead of collapsing it
+    # into single spaces. Default: false
+    attr_accessor :preserve_whitespace
+
     class << self
       attr_accessor :cached_file_handlers
 
@@ -29,6 +33,7 @@ module Plaintext
       @file = file
       @content_type = content_type
       @max_plaintext_bytes = 4_194_304 # 4 megabytes
+      @preserve_whitespace = false
     end
 
 
@@ -38,9 +43,11 @@ module Plaintext
       if handler = find_handler and
           text = handler.text(@file, max_size: max_plaintext_bytes)
 
-        text = +text
-        text.gsub!(/\s+/m, ' ')
-        text.strip!
+        unless preserve_whitespace
+          text = +text
+          text.gsub!(/\s+/m, ' ')
+          text.strip!
+        end
         text.unicode_normalize(:nfc).truncate_bytes(max_plaintext_bytes, omission: nil)
       end
     end

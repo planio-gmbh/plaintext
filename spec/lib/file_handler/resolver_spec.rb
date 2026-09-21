@@ -15,6 +15,22 @@ describe Plaintext::Resolver do
     expect(resolver.text).to eq("hello world!")
   end
 
+  it 'keeps the whitespace returned by the handler if preserve_whitespace is set' do
+    allow(handler).to receive(:text).and_return("  hello \n \n world! ")
+    resolver.preserve_whitespace = true
+
+    expect(resolver.text).to eq("  hello \n \n world! ")
+  end
+
+  it 'still composes and limits the text if preserve_whitespace is set' do
+    # 'u' followed by a combining diaeresis
+    allow(handler).to receive(:text).and_return("In der Küche\n\nist es warm")
+    resolver.preserve_whitespace = true
+    resolver.max_plaintext_bytes = 14
+
+    expect(resolver.text).to eq "In der Küche\n"
+  end
+
   it 'composes decomposed characters' do
     # 'u' followed by a combining diaeresis
     allow(handler).to receive(:text).and_return("In der Küche")

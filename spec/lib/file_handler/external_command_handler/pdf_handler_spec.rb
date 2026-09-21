@@ -14,6 +14,17 @@ describe Plaintext::PdfHandler do
       expect(Plaintext::Resolver.new(file, 'application/pdf').text).to match /lorem ipsum fulltext find me!/
     end
 
+    it 'keeps the line structure if the resolver preserves whitespace' do
+      file = File.new('spec/fixtures/files/text.pdf', 'r')
+
+      squished = Plaintext::Resolver.new(file, 'application/pdf')
+      preserved = Plaintext::Resolver.new(file, 'application/pdf')
+      preserved.preserve_whitespace = true
+
+      expect(squished.text).not_to include "\n"
+      expect(preserved.text).to include "lorem ipsum fulltext find me!\n"
+    end
+
     it 'should extract umlauts correctly into UTF-8' do
       file = File.new('spec/fixtures/files/text-with-umlaut.pdf', 'r')
 
