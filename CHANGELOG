@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `Resolver#preserve_whitespace`: when set, the extracted text is returned
+  with the whitespace the handler emitted instead of being collapsed into
+  single spaces. Keeps the line structure for plain text and the formats
+  extracted by an external command (PDF, DOC, XLS, PPT, RTF, images); the
+  zipped XML handlers join their text elements with a space and are
+  unaffected. (#13)
+
 ### Changed
 - Replaced `String#mb_chars`, deprecated and to be removed in Rails 8.2, with
   `unicode_normalize` and `truncate_bytes`. File handlers are now expected to
